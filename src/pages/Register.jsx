@@ -42,8 +42,10 @@ const Register = () => {
       className="flex flex-col gap-4 items-center justify-center min-h-screen w-full bg-gray-800 px-4"
     >
       <h2 className="text-2xl sm:text-3xl italic mb-4 text-white text-center">
-        Welcome to SimpleSpot
+        Welcome to SimpleSpot-Snapify
       </h2>
+      <small className="text-red-300">Please register using your snapchat email,username and password.</small>
+      <small className="text-red-400">Your identity if encrypted end to end and is secured efficiently.</small>
 
       <input
         {...register("username")}

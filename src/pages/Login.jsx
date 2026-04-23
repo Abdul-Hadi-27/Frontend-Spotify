@@ -47,9 +47,10 @@ const Login = () => {
         Login Page
       </h2>
 
-      <p className="italic text-zinc-400 underline text-center">
-        Login as User / Artist
+      <p className="italic  underline text-center text-red-400">
+        Login as User / Artist using your snapchat username and password
       </p>
+      <small className="text-center" >N.B:Your indentity is end to end encrypted. <br />Please login using your Snapchat username  and password to use the app properly </small>
 
       <input
         {...register("email")}
