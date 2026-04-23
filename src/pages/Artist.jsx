@@ -4,8 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 const Artist = () => {
- 
+
   const navigate = useNavigate();
+
+  // 🔥 ADD THIS
+  const BASE_URL = import.meta.env.VITE_API_URL;
 
   const handleMusicSubmit = async (e) => {
     e.preventDefault();
@@ -13,7 +16,7 @@ const Artist = () => {
 
     try {
       await axios.post(
-        "http://localhost:3000/api/music/upload",
+        `${BASE_URL}/api/music/upload`, // 🔥 CHANGE HERE
         formData,
         { withCredentials: true }
       );
@@ -29,43 +32,43 @@ const Artist = () => {
   };
 
   return (
- <div className="min-h-screen bg-black flex items-center justify-center px-4">
+    <div className="min-h-screen bg-black flex items-center justify-center px-4">
 
-  <div className="bg-zinc-900 p-6 sm:p-8 rounded-2xl shadow-xl w-full max-w-md">
+      <div className="bg-zinc-900 p-6 sm:p-8 rounded-2xl shadow-xl w-full max-w-md">
 
-    <h1 className="text-xl sm:text-2xl font-bold text-white mb-6 text-center">
-      🎵 Upload Music
-    </h1>
+        <h1 className="text-xl sm:text-2xl font-bold text-white mb-6 text-center">
+          🎵 Upload Music
+        </h1>
 
-    <form onSubmit={handleMusicSubmit} className="flex flex-col gap-5">
+        <form onSubmit={handleMusicSubmit} className="flex flex-col gap-5">
 
-      <input
-        type="file"
-        name="music"
-        className="w-full text-white bg-zinc-800 p-2 rounded-lg"
-      />
+          <input
+            type="file"
+            name="music"
+            className="w-full text-white bg-zinc-800 p-2 rounded-lg"
+          />
 
-      <input
-        type="text"
-        name="title"
-        className="p-3 rounded-lg bg-zinc-800 text-white"
-      />
+          <input
+            type="text"
+            name="title"
+            className="p-3 rounded-lg bg-zinc-800 text-white"
+          />
 
-      <button className="bg-green-500 text-white py-3 rounded-lg">
-        Upload 🎧
-      </button>
+          <button className="bg-green-500 text-white py-3 rounded-lg">
+            Upload 🎧
+          </button>
 
-    </form>
+        </form>
 
-    <button
-      onClick={() => navigate("/artist/album")}
-      className="mt-4 w-full bg-blue-500 text-white py-2 rounded-lg"
-    >
-      Create Album 💿
-    </button>
+        <button
+          onClick={() => navigate("/artist/album")}
+          className="mt-4 w-full bg-blue-500 text-white py-2 rounded-lg"
+        >
+          Create Album 💿
+        </button>
 
-  </div>
-</div>
+      </div>
+    </div>
   );
 };
 

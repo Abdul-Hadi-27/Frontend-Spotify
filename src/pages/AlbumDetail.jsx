@@ -7,6 +7,9 @@ const AlbumDetail = () => {
   const [album, setAlbum] = useState(null);
   const [currentAudio, setCurrentAudio] = useState(null);
 
+  // 🔥 ADD THIS
+  const BASE_URL = import.meta.env.VITE_API_URL;
+
   const handlePlay = (e) => {
     if (currentAudio && currentAudio !== e.target) {
       currentAudio.pause();
@@ -16,7 +19,7 @@ const AlbumDetail = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/api/music/albums/${id}`, {
+      .get(`${BASE_URL}/api/music/albums/${id}`, { // 🔥 CHANGE HERE
         withCredentials: true,
       })
       .then((res) => setAlbum(res.data.album))
@@ -30,17 +33,15 @@ const AlbumDetail = () => {
   return (
     <div className="min-h-screen bg-black text-white p-6">
 
-      {/* Album Info */}
-      <h1 className="text-3xl font-bold">{album.title}</h1>
+      <h1 className="text-2xl sm:text-3xl font-bold">{album.title}</h1>
       <p className="text-gray-400 mb-6">
         by {album.artist?.username}
       </p>
 
-      {/* Songs */}
-      <h2 className="text-xl mb-4">🎵 Songs</h2>
+      <h2 className="text-lg sm:text-xl mb-4">🎵 Songs</h2>
 
       {album.musics?.map((song) => (
-        <div key={song._id} className="bg-zinc-900 p-4 rounded mb-3">
+        <div key={song._id} className="bg-zinc-900 p-3 sm:p-4 rounded mb-3">
           <p>{song.title}</p>
 
           <audio

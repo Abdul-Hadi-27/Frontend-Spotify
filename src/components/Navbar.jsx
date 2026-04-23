@@ -10,6 +10,9 @@ const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [role, setRole] = useState(null);
 
+  // 🔥 ADD THIS
+  const BASE_URL = import.meta.env.VITE_API_URL;
+
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
 
@@ -25,7 +28,7 @@ const Navbar = () => {
   const handleLogout = async () => {
     try {
       await axios.post(
-        "http://localhost:3000/api/auth/logout",
+        `${BASE_URL}/api/auth/logout`, // 🔥 CHANGE HERE
         {},
         { withCredentials: true }
       );
