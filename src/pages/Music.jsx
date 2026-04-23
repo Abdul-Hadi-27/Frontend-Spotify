@@ -19,7 +19,7 @@ const Music = () => {
   };
 
   useEffect(() => {
-    axios.get(`${BASE_URL}/api/music`, { // 🔥 CHANGE
+    axios.get(`${BASE_URL}/api/music/`, { // 🔥 CHANGE
       withCredentials: true
     }).then(res => setMusic(res.data.musics));
   }, []);

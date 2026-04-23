@@ -14,7 +14,7 @@ const Albums = () => {
   // 🔥 Fetch songs
   useEffect(() => {
     axios
-      .get(`${BASE_URL}/api/music`, { // 🔥 CHANGE
+      .get(`${BASE_URL}/api/music/`, { // 🔥 CHANGE
         withCredentials: true,
       })
       .then((res) => {
